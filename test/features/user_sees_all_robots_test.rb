@@ -23,9 +23,9 @@ class UserSeesAllRobotsTest < FeatureTest
       department: "Department2"
       })
 
-      visit '/robots'
+    visit '/robots'
 
-      assert page.has_content?("1: Robot1")
+    assert page.has_content?("1: Robot1")
   end
 
 end

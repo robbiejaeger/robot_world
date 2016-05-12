@@ -17,6 +17,8 @@ class RobotTest < Minitest::Test
     robot = robot_manager.find(1)
 
     assert_equal 1, robot.id
+    assert_equal "Rob", robot.name
+    assert robot.birthdate.kind_of?(Time)
   end
 
 end
