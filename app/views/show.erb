@@ -6,6 +6,6 @@
 
 <p>City: <%= @robot.city %></p>
 <p>State: <%= @robot.state %></p>
-<p>Birthdate: <%= @robot.birthdate %></p>
-<p>Date Hired: <%= @robot.date_hired %></p>
+<p>Birthdate: <%= @robot.birthdate.strftime("%b %e, %Y") %></p>
+<p>Date Hired: <%= @robot.date_hired.strftime("%b %e, %Y") %></p>
 <p>Department: <%= @robot.department %></p>

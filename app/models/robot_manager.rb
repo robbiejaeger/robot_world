@@ -1,4 +1,5 @@
 require 'yaml/store'
+require 'time'
 require_relative 'robot'
 
 class RobotManager
@@ -19,8 +20,8 @@ class RobotManager
         "city" => robot[:city],
         "state" => robot[:state],
         "avatar" => "https://robohash.org/#{robot[:name]}.png",
-        "birthdate" => robot[:birthdate],
-        "date_hired" => robot[:date_hired],
+        "birthdate" => Time.parse(robot[:birthdate]),
+        "date_hired" => Time.parse(robot[:date_hired]),
         "department" => robot[:department]
       }
     end

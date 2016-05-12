@@ -1,19 +1,19 @@
 ---
 robots:
-- id: 1
-  name: Robbie
-  city: Newton
+- id: 4
+  name: Sam
+  city: Boston
   state: MA
+  avatar: https://robohash.org/Sam.png
+  birthdate: 1988-05-09 00:00:00.000000000 -06:00
+  date_hired: 2014-10-10 00:00:00.000000000 -06:00
+  department: Auto
+- id: 5
+  name: Robbie
+  city: Chicago
+  state: IL
   avatar: https://robohash.org/Robbie.png
-  birthdate: '9'
-  date_hired: '9'
-  department: Food
-- id: 3
-  name: Samwise
-  city: Denver
-  state: CO
-  avatar: https://robohash.org/Samwise.png
-  birthdate: '9'
-  date_hired: '9'
-  department: Waiter
-total: 3
+  birthdate: 2010-10-10 00:00:00.000000000 -06:00
+  date_hired: 2010-11-10 00:00:00.000000000 -07:00
+  department: Finance
+total: 5

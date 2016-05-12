@@ -1,7 +1,11 @@
-<h1>Welcome to Robot Workers</h1>
+<h1>All Robot Workers</h1>
 
-<ul class="list-unstyled">
-  <li><a href="/robots">View All Robot Workers</a></li>
-  <li><a href="/robots/new">Create a New Robot</a></li>
-  <li><a href="/dashboard">View Stats About Robot Workers</a></li>
-</ul>
+<% @robots.each do |robot| %>
+  <h3><%= robot.id %>: <a href="robots/<%= robot.id %>"><%= robot.name %></a></h3>
+  <a class="btn btn-default" href="/robots/<%= robot.id %>/edit">Edit</a>
+
+  <form action="/robots/<%= robot.id %>" method="post">
+    <input type="hidden" name="_method" value="DELETE">
+    <input class="btn btn-default" type="submit" value="Delete">
+  </form>
+<% end %>

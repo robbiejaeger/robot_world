@@ -1,16 +1,20 @@
 require 'models/robot_manager'
+require 'models/dashboard'
 
 class RobotWorldApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
   set :method_override, true
 
   get '/' do
-    erb :index
+    @robots = robot_manager.all
+    @dashboard.get_data(@robots)
+    @results = @dashboard.data
+    erb :dashboard
   end
 
   get '/robots' do
     @robots = robot_manager.all
-    erb :all
+    erb :index
   end
 
   get '/robots/new' do
@@ -44,6 +48,7 @@ class RobotWorldApp < Sinatra::Base
 
   def robot_manager
     database = YAML::Store.new('db/robot_manager')
+    @dashboard ||= Dashboard.new
     @robot_manager ||= RobotManager.new(database)
   end
 end
