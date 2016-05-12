@@ -1,6 +1,3 @@
-require 'models/robot_manager'
-require 'models/dashboard'
-
 class RobotWorldApp < Sinatra::Base
   set :root, File.expand_path("..", __dir__)
   set :method_override, true
@@ -47,7 +44,11 @@ class RobotWorldApp < Sinatra::Base
   end
 
   def robot_manager
-    database = YAML::Store.new('db/robot_manager')
+    if ENV["RACK_ENV"] == "test"
+      database = YAML::Store.new('db/robot_manager_test')
+    else
+      database = YAML::Store.new('db/robot_manager')
+    end
     @dashboard ||= Dashboard.new
     @robot_manager ||= RobotManager.new(database)
   end

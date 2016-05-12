@@ -1,8 +1,9 @@
-<h1>Welcome to Robot World</h1>
+<div class="jumbotron" style="background-image: url(http://wallpaper.pickywallpapers.com/2560x1440/bender-silhouette.jpg); background-size: cover;">
+  <h1>Robot World</h1>
+  <p>Get a robot to work for you!</p>
+  <p><a class="btn btn-primary btn-lg" href="/robots" role="button">View Robot Database</a></p>
+  <p><a class="btn btn-primary btn-lg btn-success" href="/robots/new" role="button">Hire a New Robot</a></p>
+</div>
 
-<ul class="list-unstyled">
-  <li><a href="/robots">View Robot Workers</a></li>
-  <li><a href="/robots/new">Create a New Robot</a></li>
-</ul>
-
-<p>Average Age (years): <%= @results[:avg_age] %></p>
+<h2>Robot Stats!</h2>
+<p>Average Age: <%= @results[:avg_age] %> years</p>

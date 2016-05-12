@@ -1,11 +1,25 @@
-<h1>All Robot Workers</h1>
+<h1 class="text-center">Robot Worker Database</h1>
 
 <% @robots.each do |robot| %>
-  <h3><%= robot.id %>: <a href="robots/<%= robot.id %>"><%= robot.name %></a></h3>
-  <a class="btn btn-default" href="/robots/<%= robot.id %>/edit">Edit</a>
+<div class="col-sm-6 col-md-3">
 
-  <form action="/robots/<%= robot.id %>" method="post">
-    <input type="hidden" name="_method" value="DELETE">
-    <input class="btn btn-default" type="submit" value="Delete">
-  </form>
+    <div class="thumbnail">
+      <img src="<%= robot.avatar %>" alt="<%= robot.name %>">
+      <div class="caption">
+        <h3><%= robot.id %>: <a href="robots/<%= robot.id %>"><%= robot.name %></a></h3>
+        <p>Department: <%= robot.department %></p>
+        <div class="btn-group">
+
+
+          <a class="btn btn-primary" href="/robots/<%= robot.id %>/edit">Edit</a>
+
+          <form action="/robots/<%= robot.id %>" method="post">
+            <input type="hidden" name="_method" value="DELETE">
+            <input class="btn btn-danger" type="submit" value="Delete">
+          </form>
+        </div>
+      </div>
+    </div>
+
+</div>
 <% end %>

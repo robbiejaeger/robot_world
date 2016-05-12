@@ -16,4 +16,20 @@ robots:
   birthdate: 2010-10-10 00:00:00.000000000 -06:00
   date_hired: 2010-11-10 00:00:00.000000000 -07:00
   department: Finance
-total: 5
+- id: 6
+  name: Bob
+  city: Chicago
+  state: IL
+  avatar: https://robohash.org/Bob.png
+  birthdate: 2016-05-02 00:00:00.000000000 -06:00
+  date_hired: 2016-05-11 00:00:00.000000000 -06:00
+  department: Finance
+- id: 7
+  name: Dana
+  city: Denver
+  state: CO
+  avatar: https://robohash.org/Dana.png
+  birthdate: 1991-07-18 00:00:00.000000000 -06:00
+  date_hired: 2016-05-14 00:00:00.000000000 -06:00
+  department: Barber Shop
+total: 7

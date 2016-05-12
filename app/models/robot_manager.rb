@@ -1,6 +1,5 @@
 require 'yaml/store'
 require 'time'
-require_relative 'robot'
 
 class RobotManager
   attr_reader :database
@@ -52,8 +51,8 @@ class RobotManager
       target_robot["city"] = robot[:city]
       target_robot["state"] = robot[:state]
       target_robot["avatar"] = "https://robohash.org/#{robot[:name]}.png"
-      target_robot["birthdate"] = robot[:birthdate]
-      target_robot["date_hired"] = robot[:date_hired]
+      target_robot["birthdate"] = Time.parse(robot[:birthdate])
+      target_robot["date_hired"] = Time.parse(robot[:date_hired])
       target_robot["department"] = robot[:department]
     end
   end
@@ -61,6 +60,13 @@ class RobotManager
   def destroy(id)
     database.transaction do
       database['robots'].delete_if {|robot| robot["id"] == id}
+    end
+  end
+
+  def delete_all
+    database.transaction do
+      database['robots'] = []
+      database['total'] = 0
     end
   end
 end

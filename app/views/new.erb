@@ -1,10 +1,35 @@
 <form action="/robots" method="post">
-  <p>Enter the robot's information:</p>
-  Name: <input type="text" name="robot[name]"><br/>
-  City: <input type="text" name="robot[city]"><br/>
-  State: <input type="text" name="robot[state]"><br/>
-  Birthdate: <input type="date" name="robot[birthdate]"><br/>
-  Date Hired: <input type="date" name="robot[date_hired]"><br/>
-  Department: <input type="text" name="robot[department]"><br/>
+  <p>Enter the Robot's Information:</p>
+
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" name="robot[name]" class="form-control" id="name" placeholder="Name">
+  </div>
+
+  <div class="form-group">
+    <label for="city">City:</label>
+    <input type="text" name="robot[city]" class="form-control" id="city" placeholder="City">
+  </div>
+
+  <div class="form-group">
+    <label for="state">State:</label>
+    <input type="text" name="robot[state]" class="form-control" id="state" placeholder="State">
+  </div>
+
+  <div class="form-group">
+    <label for="birthdate">Birthdate:</label>
+    <input type="date" name="robot[birthdate]" class="form-control" id="birthdate">
+  </div>
+
+  <div class="form-group">
+    <label for="date_hired">Date Hired:</label>
+    <input type="date" name="robot[date_hired]" class="form-control" id="date_hired">
+  </div>
+
+  <div class="form-group">
+    <label for="departmnt">Department:</label>
+    <input type="text" name="robot[department]" class="form-control" id="department" placeholder="Department">
+  </div>
+
   <input type="submit">
 </form>
