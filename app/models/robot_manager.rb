@@ -1,6 +1,3 @@
-require 'yaml/store'
-require 'time'
-
 class RobotManager
   attr_reader :database
 
@@ -9,35 +6,24 @@ class RobotManager
   end
 
   def create(robot)
-    database.transaction do
-      database['robots'] ||= []
-      database['total'] ||= 0
-      database['total'] += 1
-      database['robots'] << {
-        "id" => database['total'],
-        "name" => robot[:name],
-        "city" => robot[:city],
-        "state" => robot[:state],
-        "avatar" => "https://robohash.org/#{robot[:name]}.png",
-        "birthdate" => Time.parse(robot[:birthdate]),
-        "date_hired" => Time.parse(robot[:date_hired]),
-        "department" => robot[:department]
-      }
-    end
+    robot[:avatar] = "https://robohash.org/#{robot[:name]}.png"
+    table.insert(robot)
   end
 
-  def raw_robots
-    database.transaction do
-      database['robots'] || []
-    end
+  def table
+    database.from(:robots).order(:id)
   end
 
   def all
-    raw_robots.map{|robot_data| Robot.new(robot_data)}
+    table.to_a.map{|robot_data| Robot.new(robot_data)}
+  end
+
+  def locate_robot(id)
+    table.where(:id => id)
   end
 
   def raw_robot(id)
-    raw_robots.find {|robot| robot["id"] == id}
+    locate_robot(id).to_a.first
   end
 
   def find(id)
@@ -45,28 +31,15 @@ class RobotManager
   end
 
   def update(id, robot)
-    database.transaction do
-      target_robot = database['robots'].find {|robot| robot["id"] == id}
-      target_robot["name"] = robot[:name]
-      target_robot["city"] = robot[:city]
-      target_robot["state"] = robot[:state]
-      target_robot["avatar"] = "https://robohash.org/#{robot[:name]}.png"
-      target_robot["birthdate"] = Time.parse(robot[:birthdate])
-      target_robot["date_hired"] = Time.parse(robot[:date_hired])
-      target_robot["department"] = robot[:department]
-    end
+    robot[:avatar] = "https://robohash.org/#{robot[:name]}.png"
+    locate_robot(id).update(robot)
   end
 
   def destroy(id)
-    database.transaction do
-      database['robots'].delete_if {|robot| robot["id"] == id}
-    end
+    locate_robot(id).delete
   end
 
   def delete_all
-    database.transaction do
-      database['robots'] = []
-      database['total'] = 0
-    end
+    table.delete
   end
 end

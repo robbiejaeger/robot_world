@@ -1,6 +1,4 @@
 class RobotWorldApp < Sinatra::Base
-  set :root, File.expand_path("..", __dir__)
-  set :method_override, true
 
   get '/' do
     @robots = robot_manager.all
@@ -45,9 +43,9 @@ class RobotWorldApp < Sinatra::Base
 
   def robot_manager
     if ENV["RACK_ENV"] == "test"
-      database = YAML::Store.new('db/robot_manager_test')
+      database = Sequel.postgres('robot_manager_test')
     else
-      database = YAML::Store.new('db/robot_manager')
+      database = Sequel.postgres('robot_manager')
     end
     @dashboard ||= Dashboard.new
     @robot_manager ||= RobotManager.new(database)

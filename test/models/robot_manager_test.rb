@@ -4,7 +4,7 @@ class RobotManagerTest < Minitest::Test
   include TestHelpers
 
   def test_it_creates_a_robot
-    robot_manager.create({
+    robot_id = robot_manager.create({
       name: "Rob",
       city: "Denver",
       state: "CO",
@@ -14,9 +14,9 @@ class RobotManagerTest < Minitest::Test
       department: "Programming"
       })
 
-    robot = robot_manager.find(1)
+    robot = robot_manager.find(robot_id)
 
-    assert_equal 1, robot.id
+    assert_equal robot_id, robot.id
     assert_equal "Rob", robot.name
     assert_equal "CO", robot.state
   end
@@ -50,7 +50,7 @@ class RobotManagerTest < Minitest::Test
   end
 
   def test_can_find_a_robot
-    robot_manager.create({
+    robot_id = robot_manager.create({
       name: "Robot1",
       city: "City1",
       state: "CO",
@@ -60,13 +60,13 @@ class RobotManagerTest < Minitest::Test
       department: "Department1"
       })
 
-    robot = robot_manager.find(1)
+    robot = robot_manager.find(robot_id)
 
     assert_equal "Robot1", robot.name
   end
 
   def test_can_update_a_robot
-    robot_manager.create({
+    robot_id = robot_manager.create({
       name: "Robot1",
       city: "City1",
       state: "CO",
@@ -76,7 +76,7 @@ class RobotManagerTest < Minitest::Test
       department: "Department1"
       })
 
-    robot_manager.update(1, {
+    robot_manager.update(robot_id, {
       name: "Robot1 UPDATED",
       city: "City1",
       state: "CO",
@@ -86,13 +86,13 @@ class RobotManagerTest < Minitest::Test
       department: "Department1"
       })
 
-      robot = robot_manager.find(1)
+    robot = robot_manager.find(robot_id)
 
     assert_equal "Robot1 UPDATED", robot.name
   end
 
   def test_can_delete_a_robot
-    robot_manager.create({
+    robot1_id = robot_manager.create({
       name: "Robot1",
       city: "City1",
       state: "CO",
@@ -102,7 +102,7 @@ class RobotManagerTest < Minitest::Test
       department: "Department1"
       })
 
-    robot_manager.create({
+    robot2_id = robot_manager.create({
       name: "Robot2",
       city: "City2",
       state: "CO",
@@ -112,11 +112,11 @@ class RobotManagerTest < Minitest::Test
       department: "Department2"
       })
 
-    robot_manager.destroy(1)
+    robot_manager.destroy(robot1_id)
 
     robots = robot_manager.all
 
-    assert_equal 2, robots[0].id
+    assert_equal robot2_id, robots[0].id
   end
 
 end

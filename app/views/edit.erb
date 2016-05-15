@@ -1,5 +1,5 @@
 <form action="/robots/<%= @robot.id %>" method="post">
-  <p>Edit the Robot:</p>
+  <h2>Edit the Robot's Information:</h2>
   <input type="hidden" name="_method" value="PUT">
 
   <div class="form-group">
@@ -32,5 +32,5 @@
     <input type="text" name="robot[department]" class="form-control" id="department" value="<%= @robot.department %>">
   </div>
 
-  <input type="submit">
+  <input type="submit" class="btn btn-success">
 </form>

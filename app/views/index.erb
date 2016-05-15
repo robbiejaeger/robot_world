@@ -4,20 +4,20 @@
 <div class="col-sm-6 col-md-3">
 
     <div class="thumbnail">
-      <img src="<%= robot.avatar %>" alt="<%= robot.name %>">
+      <a href="robots/<%= robot.id %>" class="thumbnail">
+        <img src="<%= robot.avatar %>" alt="<%= robot.name %>">
+      </a>
       <div class="caption">
         <h3><%= robot.id %>: <a href="robots/<%= robot.id %>"><%= robot.name %></a></h3>
         <p>Department: <%= robot.department %></p>
-        <div class="btn-group">
-
-
-          <a class="btn btn-primary" href="/robots/<%= robot.id %>/edit">Edit</a>
+        <p>
+          <a class="btn btn-primary" href="/robots/<%= robot.id %>/edit" role="button">Edit</a>
 
           <form action="/robots/<%= robot.id %>" method="post">
             <input type="hidden" name="_method" value="DELETE">
             <input class="btn btn-danger" type="submit" value="Delete">
           </form>
-        </div>
+        </p>
       </div>
     </div>
 

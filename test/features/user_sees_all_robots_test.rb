@@ -3,7 +3,7 @@ require_relative '../test_helper'
 class UserSeesAllRobotsTest < FeatureTest
 
   def test_user_sees_all_robots
-    robot_manager.create({
+    robot_id = robot_manager.create({
       name: "Robot1",
       city: "City1",
       state: "CO",
@@ -25,7 +25,7 @@ class UserSeesAllRobotsTest < FeatureTest
 
     visit '/robots'
 
-    assert page.has_content?("1: Robot1")
+    assert page.has_content?("#{robot_id}: Robot1")
   end
 
 end

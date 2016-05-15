@@ -13,7 +13,7 @@ module TestHelpers
   end
 
   def robot_manager
-    database = YAML::Store.new('db/robot_manager_test')
+    database = Sequel.postgres('robot_manager_test')
     @robot_manager ||= RobotManager.new(database)
   end
 end

@@ -1,11 +1,20 @@
-<a href="/robots">All Robot Workers</a>
+<h1 class="text-center">Robot Details</h1>
 
-<h1><%= @robot.name %></h1>
+<div class="row well">
 
-<img src="<%= @robot.avatar %>" alt="<%= @robot.name %>"/>
+  <div class="col-md-4">
+    <img src="<%= @robot.avatar %>" alt="<%= @robot.name %>" style="background-color: white;" class="img-rounded"/>
+  </div>
 
-<p>City: <%= @robot.city %></p>
-<p>State: <%= @robot.state %></p>
-<p>Birthdate: <%= @robot.birthdate.strftime("%b %e, %Y") %></p>
-<p>Date Hired: <%= @robot.date_hired.strftime("%b %e, %Y") %></p>
-<p>Department: <%= @robot.department %></p>
+  <div class="col-md-4">
+    <h2><%= @robot.name %></h2>
+    <p>City: <%= @robot.city %></p>
+    <p>State: <%= @robot.state %></p>
+    <p>Birthdate: <%= @robot.birthdate.strftime("%b %e, %Y") %></p>
+    <p>Date Hired: <%= @robot.date_hired.strftime("%b %e, %Y") %></p>
+    <p>Department: <%= @robot.department %></p>
+  </div>
+
+</div>
+
+<a href="/robots">Back to Robot Database</a>

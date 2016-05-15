@@ -19,7 +19,7 @@ class Dashboard
 
   def average_robot_age(robots)
     (robots.map do |robot|
-      (Time.now - robot.birthdate)/(60*60*24*365.25)
+      (Date.today - robot.birthdate)/(365.25)
     end.reduce(:+)/robots.count).round(2)
   end
 end
