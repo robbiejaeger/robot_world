@@ -6,4 +6,62 @@
 </div>
 
 <h2>Robot Stats!</h2>
-<p>Average Age: <%= @results[:avg_age] %> years</p>
+
+<h3>Average Robot Age</h3>
+<p><%= @results[:avg_age] %> years</p>
+
+<h3>Robots Born Each Year:</h3>
+<table class="table">
+  <tr>
+    <th>Year</th>
+    <th>Number of Robots</th>
+  </tr>
+  <% @results[:robots_per_year].each do |year, num| %>
+  <tr>
+    <td><%= year %></td>
+    <td><%= num %></td>
+  </tr>
+  <% end %>
+</table>
+
+<h3>Robots in Each Department:</h3>
+<table class="table">
+  <tr>
+    <th>Department</th>
+    <th>Number of Robots</th>
+  </tr>
+  <% @results[:robots_by_department].each do |dept, num| %>
+  <tr>
+    <td><%= dept %></td>
+    <td><%= num %></td>
+  </tr>
+  <% end %>
+</table>
+
+<h3>Robots in Each State:</h3>
+<table class="table">
+  <tr>
+    <th>State</th>
+    <th>Number of Robots</th>
+  </tr>
+  <% @results[:robots_per_state].each do |state, num| %>
+  <tr>
+    <td><%= state %></td>
+    <td><%= num %></td>
+  </tr>
+  <% end %>
+</table>
+
+<h3>Robots in Each City:</h3>
+<table class="table">
+  <tr>
+    <th>City</th>
+    <th>Number of Robots</th>
+  </tr>
+  <% @results[:robots_per_city].each do |city, num| %>
+  <tr>
+    <td><%= city %></td>
+    <td><%= num %></td>
+  </tr>
+  <% end %>
+</table>
